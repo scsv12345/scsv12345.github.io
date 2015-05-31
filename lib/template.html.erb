@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+  <meta name="viewport" content="width=480">
+  <title>A summary of my open source projects and contributions</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link href="style.css" media="all" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <ul><% repos.each do |repo| %>
+    <li class="<%= repo.klass %> <%= repo.style %>" style="background-image: url(images/<%= repo.name %>-out.png)">
+      <% if repo.count %>
+        <aside>
+          <%= repo.year %><br />
+          <%= repo.count %> <span class="octicon git-<%= repo.icon %>"></span>
+        </aside>
+      <% end %>
+      <h1 style="text-shadow: 2px 2px 4px <%= repo.border %>"><%= repo.title %></h1>
+      <article>
+        <% if repo.description %>
+          <h2><%= repo.description %>.</h2>
+        <% end %>
+        <% repo.lines.each do |line| %><p><%= line %></p>
+        <% end %>
+      </article>
+      <a href="http://<%= repo.url %><%= repo.query %>" style="background-image: url(images/<%= repo.name %>-in.png)"><%= repo.url %></a>
+    </li><% end %>
+  </ul>
+</body>
+</html>
